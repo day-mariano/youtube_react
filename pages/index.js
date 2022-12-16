@@ -1,3 +1,4 @@
+import React from "react";
 import config from "../config.json";
 import styled from "styled-components";
 import { CSSReset } from "../src/components/CSSReset";
@@ -9,14 +10,15 @@ import Banner from "../src/components/Banner";
 function HomePage() {
   const estilosDaHomePage = {
   };
+  const [valorDoFiltro, setValorDoFiltro] = React.useState("Angular");
 
   return (
     <>
       <CSSReset />
       <div style={estilosDaHomePage}>
-        <Menu />
+        <Menu valorDoFiltro={valorDoFiltro} setValorDoFiltro={setValorDoFiltro} />
         <Header />
-        <Timeline playlists={config.playlists}>
+        <Timeline searchValue={valorDoFiltro} playlists={config.playlists}>
           Conteúdo
         </Timeline>
       </div>
@@ -55,19 +57,23 @@ function Header() {
   )
 }
 
-function Timeline(props) {
-  const playlistNames = Object.keys(props.playlists);
+function Timeline({searchValue, ...propriedades}) {
+  const playlistNames = Object.keys(propriedades.playlists);
 
   return (
     <StyledTimeline>
       {playlistNames.map((playlistName) => {
-          const videos = props.playlists[playlistName];
-          console.log(videos);
+          const videos = propriedades.playlists[playlistName];
           return (
             <section key={playlistName}>
               <h2>{playlistName}</h2>
               <div>
-                {videos.map((video) => {
+                {videos.filter((video) => {
+                  const titleNormalized = video.title.toLowerCase();
+                  const searchValueNormalized = searchValue.toLowerCase();
+                  return titleNormalized.includes(searchValueNormalized);
+
+                }).map((video) => {
                   return (
                     <a key={video.url} href={video.url}>
                       <img src={video.thumb}/>

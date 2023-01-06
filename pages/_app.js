@@ -12,7 +12,7 @@ const theme = {
   dark: {
     backgroundBase: "#181818",
     backgroundLevel1: "#202020",
-    backgroundLevel2: "#313131",
+    backgroundLevel2: "#313131",git
     borderBase: "#383838",
     textColorBase: "#FFFFFF",
   },
@@ -21,7 +21,7 @@ const theme = {
 
 export default function MyApp({ Component, pageProps }) { 
   return (
-    <ThemeProvider theme={theme. }>
+    <ThemeProvider theme={theme.light}>
       <CSSReset />
       <Component {...pageProps} />
     </ThemeProvider>

@@ -10,8 +10,8 @@ export default function ColorModeProvider(props) {
   const [mode, setMode] = React.useState(props.initialMode);
 
   function toggleMode() {
-mode === "dark") setMode("light");
-mode === "light")  setMode("dark"); 
+    if( mode === "dark") setMode("light");
+    if( mode === "light")  setMode("dark"); 
   }
 
   return (

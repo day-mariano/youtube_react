@@ -9,7 +9,7 @@ import Banner from "../src/components/Banner";
 function HomePage() {
   const estilosDaHomePage = {
   };
-  const [valorDoFiltro, setValorDoFiltro] = React.useState("Angular");
+  const [valorDoFiltro, setValorDoFiltro] = React.useState("");
 
   return (
     <>

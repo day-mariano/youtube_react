@@ -47,7 +47,7 @@ export default function RegisterVideo () {
             placeholder="Título do vídeo" 
             name="titulo"
             value={formCadastro. values.titulo} 
-            onChange={formCadastro.handleChange} 
+            onChange={formCadastro.handleChange}  vid video
           />
            <input 
             placeholder="URL"

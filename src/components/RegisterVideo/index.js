@@ -2,8 +2,8 @@ import React from "react";
 import react from "react";
 import { StyledRegisterVideo } from "./styles";
 
-function useForm() {
-  const [values, setValues] = React.useState({ titulo: "" , URL: "" })
+function useForm(propsDoForm) {
+  const [values, setValues] = React.useState(propsDoForm.initialValues)
 
   return{
     values,
@@ -24,7 +24,9 @@ function useForm() {
 }
 
 export default function RegisterVideo () {
-  const formCadastro= useForm();
+  const formCadastro= useForm({
+    initialValues: { titulo: "Frost punk", url: "http://youtube.."}
+  });
   const [formVisivel, setFormVisivel] = React.useState(false);
 
   return (
@@ -47,7 +49,7 @@ export default function RegisterVideo () {
             placeholder="Título do vídeo" 
             name="titulo"
             value={formCadastro. values.titulo} 
-            onChange={formCadastro.handleChang
+            onChange={formCadastro.handleChange}
           />
            <input 
             placeholder="URL"
